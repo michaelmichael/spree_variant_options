@@ -4,10 +4,10 @@ require "spree_variant_options/version"
 
 Gem::Specification.new do |s|
   s.name        = "spree_variant_options"
-  s.version     = 0.7
+  s.version     = 0.71
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ["Spencer Steffen", "Stephane Bounmy"]
-  s.email       = ["spencer@citrusme.com", 'stephanebounmy@gmail.com']
+  s.authors     = ["Spencer Steffen", "Stephane Bounmy", "David Biagi"]
+  s.email       = ["spencer@citrusme.com", 'stephanebounmy@gmail.com', "david@arttoaid.com"]
   s.homepage    = "https://github.com/citrus/spree_variant_options"
   s.summary     = %q{Spree Variant Options is a simple spree extension that replaces the radio-button variant selection with groups of option types and values.}
   s.description = %q{Spree Variant Options is a simple spree extension that replaces the radio-button variant selection with groups of option types and values. Please see the documentation for more details.}
