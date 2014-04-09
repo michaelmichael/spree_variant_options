@@ -17,8 +17,10 @@ Deface::Override.new(:virtual_path   => "spree/admin/option_types/edit",
                      :disabled       => false)
 
 # Image upload for many variants on admin area
+=begin
 Deface::Override.new(:virtual_path   => "spree/admin/images/form",
                      :name           => "admin_multiple_image_upload_for_variant_options",
                      :replace        => "[data-hook=admin_image_form_fields]",
                      :partial        => "spree/admin/images/form",
                      :disabled       => false)
+=end
