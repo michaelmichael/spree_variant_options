@@ -5,7 +5,7 @@ Spree::Admin::ImagesController.class_eval do
   def load_data
     Rails.logger.info("load_data")
     #super_load_data
-    @product = Product.find_by_permalink(params[:product_id])
+    @product = Spree::Product.find_by_permalink(params[:product_id])
     @variants = @product.variants.collect do |variant|
       [variant.sku_and_options_text, variant.id]
     end
