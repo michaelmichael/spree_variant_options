@@ -1,10 +1,15 @@
 Spree::Admin::ImagesController.class_eval do
-  alias_method :super_load_data, :load_data
+  #alias_method :super_load_data, :load_data
 
   # Called in a before_filter
   def load_data
     Rails.logger.info("load_data")
-    super_load_data
+    #super_load_data
+    @product = Product.find_by_permalink(params[:product_id])
+    @variants = @product.variants.collect do |variant|
+      [variant.sku_and_options_text, variant.id]
+    end
+    @variants.insert(0, [Spree.t(:all), @product.master.id])
     Rails.logger.info("after super_load_data")
 
     @grouped_option_values ||= @product.option_values.group_by(&:option_type)
