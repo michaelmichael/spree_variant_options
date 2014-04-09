@@ -3,10 +3,14 @@ Spree::Admin::ImagesController.class_eval do
 
   # Called in a before_filter
   def load_data
+    Rails.logger.info("load_data")
     super_load_data
+    Rails.logger.info("after super_load_data")
 
     @grouped_option_values ||= @product.option_values.group_by(&:option_type)
+    Rails.logger.info("after @grouped_option_values")
     @grouped_option_values.sort_by { |option_type, option_values| option_type.position }
+    Rails.logger.info("after @grouped_option_values sort")
   end
 
   # Called in a create.before
