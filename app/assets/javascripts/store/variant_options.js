@@ -176,7 +176,6 @@ function VariantOptions(params) {
         $('<div>Quantity: ' + prices[0].quantity + '</div>').insertAfter("span.price");
       } else {
         $('#product-price .price').html('<span class="price from">' + prices[0].price + '</span> - <span class="price to">' + prices[prices.length - 1].price + '</span>');
-        $('<div>Quantity: ' + prices[0].quantity + '</div>').insertAfter("span.price");
       }
       return variants;
     }
@@ -194,6 +193,10 @@ function VariantOptions(params) {
       } catch(error) {
         // depends on modified version of product.js
       }
+      var quant = $("#variant_quantity");
+      if(quant && variant.quantity){
+        quant.html("Quantity: "+variant.quantity);
+      }
     } else {
 
       if (variants) {
@@ -208,6 +211,10 @@ function VariantOptions(params) {
       variants = $("div.variant-options.index-0")
       if (variants.find("a.option-value.out-of-stock").length != variants.find("a.option-value").length)
         price.text(i18n.variant_options_select);
+      var quant = $("#variant_quantity");
+      if(quant){
+        quant.html("");
+      }
     }
   }
 
