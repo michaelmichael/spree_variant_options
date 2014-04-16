@@ -165,14 +165,18 @@ function VariantOptions(params) {
       return variant = variants[selection[0]];
     } else {
       var prices = [];
-      $.each(variants, function(key, value) { prices.push(value.price) });
+      $.each(variants, function(key, value) { 
+        prices.push({price: value.price, quantity: value.quantity});
+      });
       prices = $.unique(prices).sort(function(a, b) {
-        return to_f(a) < to_f(b) ? -1 : 1;
+        return to_f(a.price) < to_f(b.price) ? -1 : 1;
       });
       if (prices.length == 1) {
-        $('#product-price .price').html('<span class="price assumed">' + prices[0] + '</span>');
+        $('#product-price .price').html('<span class="price assumed">' + prices[0].price + '</span>');
+        $('<div>Quantity: ' + prices[0].quantity + '</div>').insertAfter("span.price");
       } else {
-        $('#product-price .price').html('<span class="price from">' + prices[0] + '</span> - <span class="price to">' + prices[prices.length - 1] + '</span>');
+        $('#product-price .price').html('<span class="price from">' + prices[0].price + '</span> - <span class="price to">' + prices[prices.length - 1].price + '</span>');
+        $('<div>Quantity: ' + prices[0].quantity + '</div>').insertAfter("span.price");
       }
       return variants;
     }
