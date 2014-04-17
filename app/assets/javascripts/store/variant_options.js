@@ -161,8 +161,13 @@ function VariantOptions(params) {
   function find_variant() {
     var selected = divs.find('a.selected');
     var variants = get_variant_objects(selected.get(0).rel);
+    var quant = $("#variant_quantity");
     if (selected.length == divs.length) {
-      return variant = variants[selection[0]];
+      var variant = variants[selection[0]];
+      if(quant && variant.quantity){
+        quant.html("Quantity: "+variant.quantity);
+      }
+      return variant;
     } else {
       var prices = [];
       $.each(variants, function(key, value) { 
@@ -173,8 +178,14 @@ function VariantOptions(params) {
       });
       if (prices.length == 1) {
         $('#product-price .price').html('<span class="price assumed">' + prices[0].price + '</span>');
+        if(quant){
+          quant.html("Quantity: "+ price.quantity);
+        }
       } else {
         $('#product-price .price').html('<span class="price from">' + prices[0].price + '</span> - <span class="price to">' + prices[prices.length - 1].price + '</span>');
+        if(quant){
+          quant.html("");
+        }
       }
       return variants;
     }
@@ -192,10 +203,6 @@ function VariantOptions(params) {
       } catch(error) {
         // depends on modified version of product.js
       }
-      var quant = $("#variant_quantity");
-      if(quant && variant.quantity){
-        quant.html("Quantity: "+variant.quantity);
-      }
     } else {
 
       if (variants) {
@@ -211,10 +218,6 @@ function VariantOptions(params) {
       if (variants.find("a.option-value.out-of-stock").length != variants.find("a.option-value").length)
         price.text(i18n.variant_options_select);
 
-      var quant = $("#variant_quantity");
-      if(quant){
-        quant.html("");
-      }
     }
   }
 
