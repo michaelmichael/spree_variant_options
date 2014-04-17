@@ -163,11 +163,10 @@ function VariantOptions(params) {
     var variants = get_variant_objects(selected.get(0).rel);
     var quant = $("#variant_quantity");
     if (selected.length == divs.length) {
-      var variant = variants[selection[0]];
-      if(quant && variant.quantity){
-        quant.html("Quantity: "+variant.quantity);
+      if(quant && variants[selection[0]].quantity){
+        quant.html("Quantity: "+variants[selection[0]].quantity);
       }
-      return variant;
+      return variant = variants[selection[0]];
     } else {
       var prices = [];
       $.each(variants, function(key, value) { 
@@ -184,9 +183,8 @@ function VariantOptions(params) {
       } else {
         $('#product-price .price').html('<span class="price from">' + prices[0].price + '</span> - <span class="price to">' + prices[prices.length - 1].price + '</span>');
         if(quant){
-          console.log(prices);
           var quantity = 0;
-          $.each(prices,function(k,v){quantity += v.quantity || 0;});
+          $.each(prices,function(k,v){quantity += parseFloat(v.quantity) || 0;});
           quant.html("Quantity: "+quantity);
         }
       }
@@ -235,6 +233,7 @@ function VariantOptions(params) {
       $(element).find('h6 strong.selection').html('').removeClass('out-of-stock');
     });
     parent.find('strong.selection').html('').removeClass('out-of-stock');
+    $("#variant_quantity").html("");
     show_all_variant_images();
   }
 
