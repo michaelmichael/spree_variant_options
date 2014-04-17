@@ -184,7 +184,10 @@ function VariantOptions(params) {
       } else {
         $('#product-price .price').html('<span class="price from">' + prices[0].price + '</span> - <span class="price to">' + prices[prices.length - 1].price + '</span>');
         if(quant){
-          quant.html("");
+          console.log(prices);
+          var quantity = 0;
+          $.each(prices,function(k,v){quantity += v.quantity || 0;});
+          quant.html("Quantity: "+quantity);
         }
       }
       return variants;
