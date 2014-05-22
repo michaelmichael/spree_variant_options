@@ -270,6 +270,8 @@ function VariantOptions(params) {
 
       if ($this.hasClass('out-of-stock'))
         selection.addClass('out-of-stock').attr('title', i18n.out_of_stock);
+
+      //$("#product-price-value").text($this.data("price")+"0");
     });
   };
   $(document).ready(init);
