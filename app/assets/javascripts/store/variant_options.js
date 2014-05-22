@@ -164,7 +164,7 @@ function VariantOptions(params) {
     var quant = $("#variant_quantity");
     if (selected.length == divs.length) {
       if(quant && variants[selection[0]].quantity){
-        quant.html("Available: "+variants[selection[0]].quantity);
+        quant.html("Quantity: "+variants[selection[0]].quantity);
       }
       return variant = variants[selection[0]];
     } else {
@@ -178,14 +178,14 @@ function VariantOptions(params) {
       if (prices.length == 1) {
         $('#product-price .price').html('<span class="price assumed">' + prices[0].price + '</span>');
         if(quant){
-          quant.html("Available: "+ price.quantity);
+          quant.html("Quantity: "+ price.quantity);
         }
       } else {
         $('#product-price .price').html('<span class="price from">' + prices[0].price + '</span> - <span class="price to">' + prices[prices.length - 1].price + '</span>');
         if(quant){
           var quantity = 0;
           $.each(prices,function(k,v){quantity += parseFloat(v.quantity) || 0;});
-          quant.html("Available: "+quantity);
+          quant.html("Quantity: "+quantity);
         }
       }
       return variants;
