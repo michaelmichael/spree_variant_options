@@ -41,7 +41,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency('coffee-rails',     '~> 4.0')
   s.add_development_dependency('capybara')
   s.add_development_dependency('launchy')
-  s.add_development_dependency('debugger')
+  s.add_development_dependency('pry-byebug')
   s.add_development_dependency("selenium-webdriver", '2.35.1')
   s.add_development_dependency("sprockets", '2.11.0')
 end
