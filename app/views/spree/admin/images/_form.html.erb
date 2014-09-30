@@ -16,7 +16,7 @@
         <%= f.label I18n.t(:other, scope: 'activerecord.models.spree/variant') %><br>
 
         <%# Master variant associates an image for all option_values and option_types combinations  %>
-        <%= check_box_tag "master_option", @product.master.id, false, :id => "master_option" %>
+        <%= check_box_tag "master_option", @product.master.id, @product.master.id == f.object.viewable_id, :id => "master_option" %>
         <%= label_tag "master_option", Spree.t(:all) %>
         <ul></ul>
 
